@@ -2,10 +2,11 @@ package com.utn.vista;
 
 import java.time.LocalDate;
 
-public class Vendedores extends Empleados{
+public class Vendedores extends Empleados {
 	private int ventas;
 	private int porcentaje;
 	private int sueldoTotal = obtenerSueldoTotal();
+
 	public int getSueldoTotal() {
 		return sueldoTotal;
 	}
@@ -29,20 +30,22 @@ public class Vendedores extends Empleados{
 	public void setPorcentaje(int porcentaje) {
 		this.porcentaje = porcentaje;
 	}
-	
+
 	@Override
 	public String toString() {
-		return super.toString()+"\nVentas: " + ventas + "\nPorcentaje:" + porcentaje + "\nSueldo Total: " + obtenerSueldoTotal();
+		return super.toString() + "\nVentas: " + ventas + "\nPorcentaje:" + porcentaje + "\nSueldo Total: "
+				+ obtenerSueldoTotal();
 	}
 
-	public Vendedores(String nombre, String apellido, int sueldoBasicoMensual, int ventas, int porcentaje, int dia, int mes, int año, LocalDate fechaDeNacimiento) {
-		super(nombre, apellido, sueldoBasicoMensual, dia, mes, año, fechaDeNacimiento);
+	public Vendedores(String nombre, String apellido, int sueldoBasicoMensual, int ventas, int porcentaje,
+			LocalDate fechaDeNacimiento, LocalDate fechaActual,float edad) {
+		super(nombre, apellido, sueldoBasicoMensual, fechaDeNacimiento, fechaActual,edad);
 		this.ventas = ventas;
 		this.porcentaje = porcentaje;
 	}
-
-	public int obtenerSueldoTotal () {
-		int porcentajeTotal = (ventas*porcentaje)/100;
+	@Override
+	public int obtenerSueldoTotal() {
+		int porcentajeTotal = (ventas * porcentaje) / 100;
 		int sueldoTotal = getSueldoBasicoMensual() + porcentajeTotal;
 		return (sueldoTotal);
 	}
