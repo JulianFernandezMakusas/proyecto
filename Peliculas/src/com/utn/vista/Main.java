@@ -1,9 +1,11 @@
 package com.utn.vista;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import javax.swing.JOptionPane;
 import javax.xml.bind.ParseConversionEvent;
+
 
 public class Main {
 	public static final int DVD = 0;
@@ -27,7 +29,8 @@ public class Main {
 		String añoPeli2;
 		int añoPeli;
 		// dvd
-		boolean alquilada;
+		int alquilada2;
+		boolean alquilada = false;
 		// BluRay
 		String idioma;
 		// memoria de las peliculas
@@ -36,7 +39,7 @@ public class Main {
 		while (JOptionPane.showOptionDialog(null, "Bienvenido, ¿Desea ingresar informacion?", "Programa",
 				JOptionPane.INFORMATION_MESSAGE, opcion, null, opcionS, JOptionPane.INFORMATION_MESSAGE) == 0) {
 			opciones = JOptionPane.showOptionDialog(null, "¿Que tipo de Pelicula es?", "Programa", opciones,
-					+JOptionPane.INFORMATION_MESSAGE, null, opcionesS, 0);
+					+JOptionPane.INFORMATION_MESSAGE, null, opcionesS, JOptionPane.INFORMATION_MESSAGE);
 			switch (opciones) {
 			case DVD://
 				titulo = JOptionPane.showInputDialog("Ingrese el nombre de la pelicula: ");
@@ -44,9 +47,17 @@ public class Main {
 				idPelicula = Integer.parseInt(idPelicula2);
 				añoPeli2 = JOptionPane.showInputDialog("Ingrese el año de la pelicula: ");
 				añoPeli = Integer.parseInt(añoPeli2);
-				alquilada = JOptionPane.showConfirmDialog(null, "¿Esta alquilada?", "Programa", alquiladaSN,
+				alquilada2 = JOptionPane.showConfirmDialog(null, "¿Esta alquilada?", "Programa", alquiladaSN,
 						JOptionPane.INFORMATION_MESSAGE);
-				alquilada = Boolean.valueOf(alquilada);
+				if (alquilada2 == JOptionPane.NO_OPTION) {
+					alquilada = false;
+				}
+				if (alquilada2 == JOptionPane.YES_OPTION) {
+					alquilada = true;
+				}
+				if (alquilada2 == JOptionPane.CANCEL_OPTION) {
+					JOptionPane.showMessageDialog(null, "El programa se va a cerrar", "Programa", 0);
+				}
 				nDvd = new Dvd(titulo, idPelicula, añoPeli, alquilada);
 				lista.add(nDvd);
 				break;
@@ -63,13 +74,18 @@ public class Main {
 			}
 		}
 		for (Pelicula peli : lista) {
-			JOptionPane.showMessageDialog(null, peli.toString(), "Progrma", 0);
-//			if (peli instanceof Dvd) {
-//				if (((Dvd) peli).esAlquilado() = true) {
-//					alquiladas++;					
-//				}
-//			}
+			if (peli instanceof Dvd) {
+				JOptionPane.showMessageDialog(null, peli.toString(), "Programa", JOptionPane.INFORMATION_MESSAGE);
+				if (((Dvd) peli).esAlquilado() == true) {
+					alquiladas++;					
+				}
+			}
 	}
+		for (Pelicula año : lista) {
+			if (2018 == año.getAñoDeLaPelicula()) {
+				JOptionPane.showMessageDialog(null, año.toString(), "Programa", JOptionPane.INFORMATION_MESSAGE);
+			}				
+		}
 		JOptionPane.showMessageDialog(null, "Las peliculas alquiladas son: " + alquiladas, "Programa",
 				JOptionPane.INFORMATION_MESSAGE);
 	}
