@@ -2,9 +2,8 @@ package com.utn.vista;
 
 public class Juego {
 	private String nombre;
-	private int fechaDeLanzamiento;
 	private String nombreDeLaEmpresa;
-	private String genero;
+	private Object genero;
 	private int peso;
 
 	public String getNombre() {
@@ -15,14 +14,6 @@ public class Juego {
 		this.nombre = nombre;
 	}
 
-	public int getFechaDeLanzamiento() {
-		return fechaDeLanzamiento;
-	}
-
-	public void setFechaDeLanzamiento(int fechaDeLanzamiento) {
-		this.fechaDeLanzamiento = fechaDeLanzamiento;
-	}
-
 	public String getNombreDeLaEmpresa() {
 		return nombreDeLaEmpresa;
 	}
@@ -31,7 +22,7 @@ public class Juego {
 		this.nombreDeLaEmpresa = nombreDeLaEmpresa;
 	}
 
-	public String getGenero() {
+	public Object getGenero() {
 		return genero;
 	}
 
@@ -49,17 +40,16 @@ public class Juego {
 
 	@Override
 	public String toString() {
-		return "Nombre del videojuego: " + nombre + "\nCreadora del juego: " + nombreDeLaEmpresa
-				+ "\nFecha de lanzamiento: " + fechaDeLanzamiento + "\nGenero del juego: " + genero + "Peso del juego: "
-				+ peso;
+		return "\nNombre del videojuego: " + nombre + "\nCreadora del juego: " + nombreDeLaEmpresa
+				 + "\nGenero del juego: " + genero + "\nPeso del juego: "
+				+ peso + " GB";
 	}
 
-	public Juego(String nombre, int fechaDeLanzamiento, String nombreDeLaEmpresa, String genero, int peso) {
+	public Juego(String nombre, String nombreDeLaEmpresa, Object genero3, int peso) {
 		super();
 		this.nombre = nombre;
-		this.fechaDeLanzamiento = fechaDeLanzamiento;
 		this.nombreDeLaEmpresa = nombreDeLaEmpresa;
-		this.genero = genero;
+		this.genero = genero3;
 		this.peso = peso;
 	}
 

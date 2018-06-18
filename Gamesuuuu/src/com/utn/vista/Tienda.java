@@ -1,9 +1,10 @@
 package com.utn.vista;
 
-public class Tienda {
+public class Tienda extends Juego{
 	private int precio;
-	public int getPrecio() {
-		return precio;
+	public String getPrecio() {
+		String precio$ = precio + "$";
+		return precio$;
 	}
 
 	public void setPrecio(int precio) {
@@ -12,11 +13,11 @@ public class Tienda {
 
 	@Override
 	public String toString() {
-		return super.toString() + "El precio es: " + precio + "Sin DLCs";
+		return super.toString() + "\nEl precio es: " + precio + "Sin DLCs";
 	}
 
-	public Tienda(int precio) {
-		super();
+	public Tienda(String nombre, String nombreDeLaEmpresa, Object genero3, int peso, int precio) {
+		super(nombre, nombreDeLaEmpresa, genero3, peso);
 		this.precio = precio;
 	}
 

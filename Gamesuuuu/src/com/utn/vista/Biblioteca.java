@@ -1,6 +1,6 @@
 package com.utn.vista;
 
-public class Biblioteca {
+public class Biblioteca extends Juego{
 	private boolean descargado;
 
 	public boolean isDescagado() {
@@ -16,8 +16,8 @@ public class Biblioteca {
 		return super.toString() + descargado;
 	}
 
-	public Biblioteca(boolean descagado) {
-		super();
+	public Biblioteca(String nombre, String nombreDeLaEmpresa, String genero, int peso,boolean descagado) {
+		super(nombre, nombreDeLaEmpresa, genero, peso);
 		this.descargado = descagado;
 	}
 }
