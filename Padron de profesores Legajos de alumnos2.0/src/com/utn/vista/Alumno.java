@@ -1,6 +1,6 @@
 package com.utn.vista;
 
-public class Alumno extends Persona{
+public class Alumno extends Persona implements java.io.Serializable{
 	private int legajo;
 
 	public int getLegajo() {

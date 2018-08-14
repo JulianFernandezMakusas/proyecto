@@ -1,6 +1,6 @@
 package com.utn.vista;
 
-public class Profesor extends Persona{
+public class Profesor extends Persona implements java.io.Serializable{
 	private int padron;
 
 	public int getPadron() {
