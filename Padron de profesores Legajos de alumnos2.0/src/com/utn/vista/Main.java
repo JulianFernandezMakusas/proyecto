@@ -37,8 +37,10 @@ public class Main {
 		Persona profesor = null;
 		Persona alumno = null;
 		String lines = " ";
-		Path alumn = Paths.get("C:\\Users\\Java\\Desktop\\Padron de profesores Legajos de alumnos2.0\\Datos Alumno");
-		Path prof = Paths.get("C:\\Users\\Java\\Desktop\\Padron de profesores Legajos de alumnos2.0\\Datos Profesor");
+		Path alumn = Paths
+				.get("C:\\Users\\Java\\Desktop\\Padron de profesores Legajos de alumnos2.0\\Datos_Alumno.ser");
+		Path prof = Paths
+				.get("C:\\Users\\Java\\Desktop\\Padron de profesores Legajos de alumnos2.0\\Datos_Profesor.ser");
 		JOptionPane.showMessageDialog(null, "Bienvenido", "Bienvenido", JOptionPane.INFORMATION_MESSAGE);
 		int archivos = JOptionPane.showConfirmDialog(null, "¿Desea crear archivos?");
 		if (archivos == 0) {
@@ -126,6 +128,18 @@ public class Main {
 		for (int i = 0; i < lista.size(); i++) {
 			JOptionPane.showMessageDialog(null, lista.get(i).toString(), "Programa", JOptionPane.DEFAULT_OPTION);
 		}
+		try {
+			ObjectInputStream in = new ObjectInputStream(Files.newInputStream(prof));
+			try {
+				while (true) {
+					profesor = (Profesor) in.readObject();
+					System.out.println(profesor.getNombre());
+				}
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
-
 }
