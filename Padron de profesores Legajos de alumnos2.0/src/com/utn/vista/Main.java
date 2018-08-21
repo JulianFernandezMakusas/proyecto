@@ -82,15 +82,13 @@ public class Main {
 						for (int i = 0; i < lista.size(); i++) {
 							p = lista.get(i);
 							if (profesor.equals(p)) {
-								JOptionPane.showMessageDialog(null, "Error: duplicado, matese por favos", "Programa",
-										0);
-							} else {
-								lista.add(profesor);
+								JOptionPane.showMessageDialog(null, "Error: duplicado", "Programa", 0);
 							}
 						}
 					}
+					lista.add(profesor);
 					System.out.println(profesor.hashCode());
-					BufferedOutputStream iProfesor = new BufferedOutputStream(lProfesor);
+					ObjectOutputStream iProfesor = new ObjectOutputStream(Files.newOutputStream(prof));
 					lProfesor.writeObject(profesor);
 					break;
 				// alumno
@@ -108,15 +106,14 @@ public class Main {
 						for (int i = 0; i < lista.size(); i++) {
 							p = lista.get(i);
 							if (alumno.equals(p)) {
-								JOptionPane.showMessageDialog(null, "Error: duplicado, matese por favos", "Programa",
-										0);
-							} else {
-								lista.add(alumno);
+								JOptionPane.showMessageDialog(null, "Error: duplicado", "Programa", 0);
+								break;
 							}
-							System.out.println(alumno.hashCode());
 						}
 					}
-					BufferedOutputStream iAlumno = new BufferedOutputStream(lAlumno);
+					lista.add(alumno);
+					System.out.println(alumno.hashCode());
+					ObjectOutputStream iAlumno = new ObjectOutputStream(Files.newOutputStream(alumn));
 					lAlumno.writeObject(alumno);
 					break;
 				default:
@@ -133,13 +130,28 @@ public class Main {
 			try {
 				while (true) {
 					profesor = (Profesor) in.readObject();
-					System.out.println(profesor.getNombre());
+					JOptionPane.showMessageDialog(null, profesor.getNombre());
 				}
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.out.println("Fin de archivo");
+		}
+		try {
+			ObjectInputStream in = new ObjectInputStream(Files.newInputStream(alumn));
+			while (true) {
+				try {
+					alumno = (Alumno) in.readObject();
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				JOptionPane.showMessageDialog(null, alumno.getNombre());
+			}
+
+		} catch (IOException e) {
+			System.out.println("Fin de archivo");
 		}
 	}
 }

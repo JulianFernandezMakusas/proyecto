@@ -1,8 +1,9 @@
 package com.utn.vista;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Persona {
+public class Persona implements Serializable{
 	private String nombre;
 	private String apellido;
 	private int dni;
